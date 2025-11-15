@@ -1,7 +1,6 @@
 # DeepAgents Flow Diagrams
 
-This document contains two comprehensive flow diagrams explaining how the DeepAgents library works. These diagrams are designed to be understandable by a 14-year-old coder, with detailed explanations of each step.
-
+This document contains two comprehensive flow diagrams explaining how the DeepAgents library works.
 ---
 
 ## Diagram 1: Complete Execution Flow
