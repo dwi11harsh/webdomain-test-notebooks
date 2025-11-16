@@ -16,6 +16,9 @@ from . import stream_types
 
 type_map = {
 
+    "types.FeatureTemplate": types.FeatureTemplate,
+    "stream_types.FeatureTemplate": stream_types.FeatureTemplate,
+
     "types.ProjectComponent": types.ProjectComponent,
     "stream_types.ProjectComponent": stream_types.ProjectComponent,
 
@@ -26,8 +29,14 @@ type_map = {
     "stream_types.RouteGeneratorOutput": stream_types.RouteGeneratorOutput,
 
 
+    "types.AnalyticsProvider": types.AnalyticsProvider,
+
     "types.CommandType": types.CommandType,
 
     "types.ComponentType": types.ComponentType,
+
+    "types.DesignSystem": types.DesignSystem,
+
+    "types.TestType": types.TestType,
 
 }

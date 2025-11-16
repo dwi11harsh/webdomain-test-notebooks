@@ -23,8 +23,14 @@ class StreamState(BaseModel, typing.Generic[StreamStateValueT]):
     value: StreamStateValueT
     state: typing_extensions.Literal["Pending", "Incomplete", "Complete"]
 # #########################################################################
-# Generated classes (3)
+# Generated classes (4)
 # #########################################################################
+
+class FeatureTemplate(BaseModel):
+    name: typing.Optional[str] = None
+    description: typing.Optional[str] = None
+    components: typing.List[str]
+    dependencies: typing.List[str]
 
 class ProjectComponent(BaseModel):
     type: typing.Optional[types.ComponentType] = None
@@ -39,6 +45,9 @@ class ProjectComponent(BaseModel):
     input_validation: typing.Optional[str] = None
     error_handling: typing.Optional[str] = None
     example_usage: typing.Optional[str] = None
+    design_guidelines: typing.Optional[str] = None
+    test_requirements: typing.List[types.TestType]
+    analytics_events: typing.List[str]
 
 class ProjectStructure(BaseModel):
     components: typing.List["ProjectComponent"]
@@ -46,6 +55,10 @@ class ProjectStructure(BaseModel):
     package_dependencies: typing.List[str]
     file_structure: typing.List[str]
     implementation_order: typing.List[str]
+    design_system: typing.Optional[types.DesignSystem] = None
+    analytics_provider: typing.Optional[types.AnalyticsProvider] = None
+    feature_templates: typing.List["FeatureTemplate"]
+    testing_setup: typing.Optional[str] = None
 
 class RouteGeneratorOutput(BaseModel):
     componentType: typing.Optional[types.ComponentType] = None

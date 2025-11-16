@@ -37,8 +37,14 @@ def get_checks(checks: typing.Dict[CheckName, Check]) -> typing.List[Check]:
 def all_succeeded(checks: typing.Dict[CheckName, Check]) -> bool:
     return all(check.status == "succeeded" for check in get_checks(checks))
 # #########################################################################
-# Generated enums (2)
+# Generated enums (5)
 # #########################################################################
+
+class AnalyticsProvider(str, Enum):
+    Posthog = "Posthog"
+    Mixpanel = "Mixpanel"
+    Custom = "Custom"
+    NoAnalytics = "NoAnalytics"
 
 class CommandType(str, Enum):
     CreateFile = "CreateFile"
@@ -52,10 +58,32 @@ class ComponentType(str, Enum):
     Configuration = "Configuration"
     Model = "Model"
     Service = "Service"
+    Component = "Component"
+    Page = "Page"
+    Layout = "Layout"
+    Admin = "Admin"
+
+class DesignSystem(str, Enum):
+    Shadcn = "Shadcn"
+    Material = "Material"
+    Antd = "Antd"
+    Custom = "Custom"
+    NoDesignSystem = "NoDesignSystem"
+
+class TestType(str, Enum):
+    Unit = "Unit"
+    Integration = "Integration"
+    E2e = "E2e"
 
 # #########################################################################
-# Generated classes (3)
+# Generated classes (4)
 # #########################################################################
+
+class FeatureTemplate(BaseModel):
+    name: str
+    description: str
+    components: typing.List[str]
+    dependencies: typing.List[str]
 
 class ProjectComponent(BaseModel):
     type: ComponentType
@@ -70,6 +98,9 @@ class ProjectComponent(BaseModel):
     input_validation: str
     error_handling: str
     example_usage: str
+    design_guidelines: str
+    test_requirements: typing.List[TestType]
+    analytics_events: typing.List[str]
 
 class ProjectStructure(BaseModel):
     components: typing.List["ProjectComponent"]
@@ -77,6 +108,10 @@ class ProjectStructure(BaseModel):
     package_dependencies: typing.List[str]
     file_structure: typing.List[str]
     implementation_order: typing.List[str]
+    design_system: DesignSystem
+    analytics_provider: AnalyticsProvider
+    feature_templates: typing.List["FeatureTemplate"]
+    testing_setup: str
 
 class RouteGeneratorOutput(BaseModel):
     componentType: ComponentType
