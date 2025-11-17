@@ -20,7 +20,7 @@ from .globals import DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOURE_DOING_RUNTIM
 class TypeBuilder(type_builder.TypeBuilder):
     def __init__(self):
         super().__init__(classes=set(
-          ["FeatureTemplate","NextJSProjectComponent","ProjectStructure","RouteGeneratorOutput",]
+          ["NextJSProjectComponent","ProjectStructure","RouteGeneratorOutput",]
         ), enums=set(
           ["AllowedHTMLTag","AnalyticsProvider","CommandType","ComponentType","DesignSystem","TestType",]
         ), runtime=DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOURE_DOING_RUNTIME)
@@ -55,12 +55,8 @@ class TypeBuilder(type_builder.TypeBuilder):
 
 
     # #########################################################################
-    # Generated classes 4
+    # Generated classes 3
     # #########################################################################
-
-    @property
-    def FeatureTemplate(self) -> "FeatureTemplateViewer":
-        return FeatureTemplateViewer(self)
 
     @property
     def NextJSProjectComponent(self) -> "NextJSProjectComponentViewer":
@@ -310,7 +306,7 @@ class AnalyticsProviderAst:
     def __init__(self, tb: type_builder.TypeBuilder):
         _tb = tb._tb # type: ignore (we know how to use this private attribute)
         self._bldr = _tb.enum("AnalyticsProvider")
-        self._values: typing.Set[str] = set([  "Posthog",  "Mixpanel",  "Custom",  "NoAnalytics",  ])
+        self._values: typing.Set[str] = set([  "Posthog",  "Custom",  "NoAnalytics",  ])
         self._vals = AnalyticsProviderValues(self._bldr, self._values)
 
     def type(self) -> baml_py.FieldType:
@@ -340,10 +336,6 @@ class AnalyticsProviderValues:
     @property
     def Posthog(self) -> type_builder.EnumValueViewer:
         return type_builder.EnumValueViewer(self.__bldr.value("Posthog"))
-    
-    @property
-    def Mixpanel(self) -> type_builder.EnumValueViewer:
-        return type_builder.EnumValueViewer(self.__bldr.value("Mixpanel"))
     
     @property
     def Custom(self) -> type_builder.EnumValueViewer:
@@ -484,7 +476,7 @@ class DesignSystemAst:
     def __init__(self, tb: type_builder.TypeBuilder):
         _tb = tb._tb # type: ignore (we know how to use this private attribute)
         self._bldr = _tb.enum("DesignSystem")
-        self._values: typing.Set[str] = set([  "Shadcn",  "Material",  "Antd",  "Custom",  "NoDesignSystem",  ])
+        self._values: typing.Set[str] = set([  "Custom",  "NoDesignSystem",  ])
         self._vals = DesignSystemValues(self._bldr, self._values)
 
     def type(self) -> baml_py.FieldType:
@@ -510,18 +502,6 @@ class DesignSystemValues:
         self.__values = values # type: ignore (we know how to use this private attribute) # noqa: F821
 
     
-    
-    @property
-    def Shadcn(self) -> type_builder.EnumValueViewer:
-        return type_builder.EnumValueViewer(self.__bldr.value("Shadcn"))
-    
-    @property
-    def Material(self) -> type_builder.EnumValueViewer:
-        return type_builder.EnumValueViewer(self.__bldr.value("Material"))
-    
-    @property
-    def Antd(self) -> type_builder.EnumValueViewer:
-        return type_builder.EnumValueViewer(self.__bldr.value("Antd"))
     
     @property
     def Custom(self) -> type_builder.EnumValueViewer:
@@ -582,65 +562,14 @@ class TestTypeValues:
 
 
 # #########################################################################
-# Generated classes 4
+# Generated classes 3
 # #########################################################################
-
-class FeatureTemplateAst:
-    def __init__(self, tb: type_builder.TypeBuilder):
-        _tb = tb._tb # type: ignore (we know how to use this private attribute)
-        self._bldr = _tb.class_("FeatureTemplate")
-        self._properties: typing.Set[str] = set([  "name",  "description",  "components",  "dependencies",  ])
-        self._props = FeatureTemplateProperties(self._bldr, self._properties)
-
-    def type(self) -> baml_py.FieldType:
-        return self._bldr.field()
-
-    @property
-    def props(self) -> "FeatureTemplateProperties":
-        return self._props
-
-
-class FeatureTemplateViewer(FeatureTemplateAst):
-    def __init__(self, tb: type_builder.TypeBuilder):
-        super().__init__(tb)
-
-    
-    def list_properties(self) -> typing.List[typing.Tuple[str, type_builder.ClassPropertyViewer]]:
-        return [(name, type_builder.ClassPropertyViewer(self._bldr.property(name))) for name in self._properties]
-    
-
-
-class FeatureTemplateProperties:
-    def __init__(self, bldr: baml_py.ClassBuilder, properties: typing.Set[str]):
-        self.__bldr = bldr
-        self.__properties = properties # type: ignore (we know how to use this private attribute) # noqa: F821
-
-    
-    
-    @property
-    def name(self) -> type_builder.ClassPropertyViewer:
-        return type_builder.ClassPropertyViewer(self.__bldr.property("name"))
-    
-    @property
-    def description(self) -> type_builder.ClassPropertyViewer:
-        return type_builder.ClassPropertyViewer(self.__bldr.property("description"))
-    
-    @property
-    def components(self) -> type_builder.ClassPropertyViewer:
-        return type_builder.ClassPropertyViewer(self.__bldr.property("components"))
-    
-    @property
-    def dependencies(self) -> type_builder.ClassPropertyViewer:
-        return type_builder.ClassPropertyViewer(self.__bldr.property("dependencies"))
-    
-    
-
 
 class NextJSProjectComponentAst:
     def __init__(self, tb: type_builder.TypeBuilder):
         _tb = tb._tb # type: ignore (we know how to use this private attribute)
         self._bldr = _tb.class_("NextJSProjectComponent")
-        self._properties: typing.Set[str] = set([  "type",  "command",  "filePath",  "current_code",  "name",  "description",  "dependencies",  "specific_instructions",  "expected_behavior",  "input_validation",  "error_handling",  "example_usage",  "design_guidelines",  "test_requirements",  "analytics_events",  ])
+        self._properties: typing.Set[str] = set([  "type",  "command",  "filePath",  "dependencies",  "specific_instructions",  "input_validation",  "error_handling",  "design_guidelines",  "test_requirements",  "analytics_events",  ])
         self._props = NextJSProjectComponentProperties(self._bldr, self._properties)
 
     def type(self) -> baml_py.FieldType:
@@ -681,18 +610,6 @@ class NextJSProjectComponentProperties:
         return type_builder.ClassPropertyViewer(self.__bldr.property("filePath"))
     
     @property
-    def current_code(self) -> type_builder.ClassPropertyViewer:
-        return type_builder.ClassPropertyViewer(self.__bldr.property("current_code"))
-    
-    @property
-    def name(self) -> type_builder.ClassPropertyViewer:
-        return type_builder.ClassPropertyViewer(self.__bldr.property("name"))
-    
-    @property
-    def description(self) -> type_builder.ClassPropertyViewer:
-        return type_builder.ClassPropertyViewer(self.__bldr.property("description"))
-    
-    @property
     def dependencies(self) -> type_builder.ClassPropertyViewer:
         return type_builder.ClassPropertyViewer(self.__bldr.property("dependencies"))
     
@@ -701,20 +618,12 @@ class NextJSProjectComponentProperties:
         return type_builder.ClassPropertyViewer(self.__bldr.property("specific_instructions"))
     
     @property
-    def expected_behavior(self) -> type_builder.ClassPropertyViewer:
-        return type_builder.ClassPropertyViewer(self.__bldr.property("expected_behavior"))
-    
-    @property
     def input_validation(self) -> type_builder.ClassPropertyViewer:
         return type_builder.ClassPropertyViewer(self.__bldr.property("input_validation"))
     
     @property
     def error_handling(self) -> type_builder.ClassPropertyViewer:
         return type_builder.ClassPropertyViewer(self.__bldr.property("error_handling"))
-    
-    @property
-    def example_usage(self) -> type_builder.ClassPropertyViewer:
-        return type_builder.ClassPropertyViewer(self.__bldr.property("example_usage"))
     
     @property
     def design_guidelines(self) -> type_builder.ClassPropertyViewer:
@@ -735,7 +644,7 @@ class ProjectStructureAst:
     def __init__(self, tb: type_builder.TypeBuilder):
         _tb = tb._tb # type: ignore (we know how to use this private attribute)
         self._bldr = _tb.class_("ProjectStructure")
-        self._properties: typing.Set[str] = set([  "components",  "entry_point",  "package_dependencies",  "file_structure",  "implementation_order",  "design_system",  "analytics_provider",  "feature_templates",  "testing_setup",  ])
+        self._properties: typing.Set[str] = set([  "components",  "entry_point",  "package_dependencies",  "file_structure",  "implementation_order",  "design_system",  "analytics_provider",  "testing_setup",  ])
         self._props = ProjectStructureProperties(self._bldr, self._properties)
 
     def type(self) -> baml_py.FieldType:
@@ -790,10 +699,6 @@ class ProjectStructureProperties:
     @property
     def analytics_provider(self) -> type_builder.ClassPropertyViewer:
         return type_builder.ClassPropertyViewer(self.__bldr.property("analytics_provider"))
-    
-    @property
-    def feature_templates(self) -> type_builder.ClassPropertyViewer:
-        return type_builder.ClassPropertyViewer(self.__bldr.property("feature_templates"))
     
     @property
     def testing_setup(self) -> type_builder.ClassPropertyViewer:

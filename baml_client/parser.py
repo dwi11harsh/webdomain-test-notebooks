@@ -26,9 +26,9 @@ class LlmResponseParser:
 
     def PlanNextjsSteps(
         self, llm_response: str, baml_options: BamlCallOptions = {},
-    ) -> types.ProjectStructure:
+    ) -> typing.Union["types.ProjectStructure", str]:
         result = self.__options.merge_options(baml_options).parse_response(function_name="PlanNextjsSteps", llm_response=llm_response, mode="request")
-        return typing.cast(types.ProjectStructure, result)
+        return typing.cast(typing.Union["types.ProjectStructure", str], result)
 
     
 
@@ -40,8 +40,8 @@ class LlmStreamParser:
 
     def PlanNextjsSteps(
         self, llm_response: str, baml_options: BamlCallOptions = {},
-    ) -> stream_types.ProjectStructure:
+    ) -> typing.Union["stream_types.ProjectStructure", str]:
         result = self.__options.merge_options(baml_options).parse_response(function_name="PlanNextjsSteps", llm_response=llm_response, mode="stream")
-        return typing.cast(stream_types.ProjectStructure, result)
+        return typing.cast(typing.Union["stream_types.ProjectStructure", str], result)
 
     

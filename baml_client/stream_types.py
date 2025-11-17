@@ -23,28 +23,17 @@ class StreamState(BaseModel, typing.Generic[StreamStateValueT]):
     value: StreamStateValueT
     state: typing_extensions.Literal["Pending", "Incomplete", "Complete"]
 # #########################################################################
-# Generated classes (4)
+# Generated classes (3)
 # #########################################################################
-
-class FeatureTemplate(BaseModel):
-    name: typing.Optional[str] = None
-    description: typing.Optional[str] = None
-    components: typing.List[str]
-    dependencies: typing.List[str]
 
 class NextJSProjectComponent(BaseModel):
     type: typing.Optional[types.ComponentType] = None
     command: typing.Optional[types.CommandType] = None
     filePath: typing.Optional[str] = None
-    current_code: typing.Optional[str] = None
-    name: typing.Optional[str] = None
-    description: typing.Optional[str] = None
     dependencies: typing.List[str]
     specific_instructions: typing.Optional[str] = None
-    expected_behavior: typing.Optional[str] = None
     input_validation: typing.Optional[str] = None
     error_handling: typing.Optional[str] = None
-    example_usage: typing.Optional[str] = None
     design_guidelines: typing.Optional[str] = None
     test_requirements: typing.List[types.TestType]
     analytics_events: typing.List[str]
@@ -57,7 +46,6 @@ class ProjectStructure(BaseModel):
     implementation_order: typing.List[str]
     design_system: typing.Optional[types.DesignSystem] = None
     analytics_provider: typing.Optional[types.AnalyticsProvider] = None
-    feature_templates: typing.List["FeatureTemplate"]
     testing_setup: typing.Optional[str] = None
 
 class RouteGeneratorOutput(BaseModel):

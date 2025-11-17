@@ -92,7 +92,6 @@ class AllowedHTMLTag(str, Enum):
 
 class AnalyticsProvider(str, Enum):
     Posthog = "Posthog"
-    Mixpanel = "Mixpanel"
     Custom = "Custom"
     NoAnalytics = "NoAnalytics"
 
@@ -115,9 +114,6 @@ class ComponentType(str, Enum):
     Admin = "Admin"
 
 class DesignSystem(str, Enum):
-    Shadcn = "Shadcn"
-    Material = "Material"
-    Antd = "Antd"
     Custom = "Custom"
     NoDesignSystem = "NoDesignSystem"
 
@@ -127,28 +123,17 @@ class TestType(str, Enum):
     E2e = "E2e"
 
 # #########################################################################
-# Generated classes (4)
+# Generated classes (3)
 # #########################################################################
-
-class FeatureTemplate(BaseModel):
-    name: str
-    description: str
-    components: typing.List[str]
-    dependencies: typing.List[str]
 
 class NextJSProjectComponent(BaseModel):
     type: ComponentType
     command: CommandType
     filePath: str
-    current_code: str
-    name: str
-    description: str
     dependencies: typing.List[str]
     specific_instructions: str
-    expected_behavior: str
     input_validation: str
     error_handling: str
-    example_usage: str
     design_guidelines: str
     test_requirements: typing.List[TestType]
     analytics_events: typing.List[str]
@@ -161,7 +146,6 @@ class ProjectStructure(BaseModel):
     implementation_order: typing.List[str]
     design_system: DesignSystem
     analytics_provider: AnalyticsProvider
-    feature_templates: typing.List["FeatureTemplate"]
     testing_setup: str
 
 class RouteGeneratorOutput(BaseModel):

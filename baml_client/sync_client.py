@@ -93,7 +93,7 @@ class BamlSyncClient:
     
     def PlanNextjsSteps(self, user_prompt: str,
         baml_options: BamlCallOptions = {},
-    ) -> types.ProjectStructure:
+    ) -> typing.Union["types.ProjectStructure", str]:
         # Check if on_tick is provided
         if 'on_tick' in baml_options:
             stream = self.stream.PlanNextjsSteps(user_prompt=user_prompt,
@@ -104,7 +104,7 @@ class BamlSyncClient:
             result = self.__options.merge_options(baml_options).call_function_sync(function_name="PlanNextjsSteps", args={
                 "user_prompt": user_prompt,
             })
-            return typing.cast(types.ProjectStructure, result.cast_to(types, types, stream_types, False, __runtime__))
+            return typing.cast(typing.Union["types.ProjectStructure", str], result.cast_to(types, types, stream_types, False, __runtime__))
     
 
 
@@ -116,14 +116,14 @@ class BamlStreamClient:
 
     def PlanNextjsSteps(self, user_prompt: str,
         baml_options: BamlCallOptions = {},
-    ) -> baml_py.BamlSyncStream[stream_types.ProjectStructure, types.ProjectStructure]:
+    ) -> baml_py.BamlSyncStream[typing.Union["stream_types.ProjectStructure", str], typing.Union["types.ProjectStructure", str]]:
         ctx, result = self.__options.merge_options(baml_options).create_sync_stream(function_name="PlanNextjsSteps", args={
             "user_prompt": user_prompt,
         })
-        return baml_py.BamlSyncStream[stream_types.ProjectStructure, types.ProjectStructure](
+        return baml_py.BamlSyncStream[typing.Union["stream_types.ProjectStructure", str], typing.Union["types.ProjectStructure", str]](
           result,
-          lambda x: typing.cast(stream_types.ProjectStructure, x.cast_to(types, types, stream_types, True, __runtime__)),
-          lambda x: typing.cast(types.ProjectStructure, x.cast_to(types, types, stream_types, False, __runtime__)),
+          lambda x: typing.cast(typing.Union["stream_types.ProjectStructure", str], x.cast_to(types, types, stream_types, True, __runtime__)),
+          lambda x: typing.cast(typing.Union["types.ProjectStructure", str], x.cast_to(types, types, stream_types, False, __runtime__)),
           ctx,
         )
     

@@ -16,9 +16,6 @@ from . import stream_types
 
 type_map = {
 
-    "types.FeatureTemplate": types.FeatureTemplate,
-    "stream_types.FeatureTemplate": stream_types.FeatureTemplate,
-
     "types.NextJSProjectComponent": types.NextJSProjectComponent,
     "stream_types.NextJSProjectComponent": stream_types.NextJSProjectComponent,
 
