@@ -644,7 +644,7 @@ class ProjectStructureAst:
     def __init__(self, tb: type_builder.TypeBuilder):
         _tb = tb._tb # type: ignore (we know how to use this private attribute)
         self._bldr = _tb.class_("ProjectStructure")
-        self._properties: typing.Set[str] = set([  "components",  "entry_point",  "package_dependencies",  "file_structure",  "implementation_order",  "design_system",  "analytics_provider",  "testing_setup",  ])
+        self._properties: typing.Set[str] = set([  "components",  "color_palette",  "entry_point",  "package_dependencies",  "file_structure",  "implementation_order",  "design_system",  "analytics_provider",  "testing_setup",  ])
         self._props = ProjectStructureProperties(self._bldr, self._properties)
 
     def type(self) -> baml_py.FieldType:
@@ -675,6 +675,10 @@ class ProjectStructureProperties:
     @property
     def components(self) -> type_builder.ClassPropertyViewer:
         return type_builder.ClassPropertyViewer(self.__bldr.property("components"))
+    
+    @property
+    def color_palette(self) -> type_builder.ClassPropertyViewer:
+        return type_builder.ClassPropertyViewer(self.__bldr.property("color_palette"))
     
     @property
     def entry_point(self) -> type_builder.ClassPropertyViewer:

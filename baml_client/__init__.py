@@ -10,6 +10,40 @@
 # BAML files and re-generate this code using: baml-cli generate
 # baml-cli is available with the baml package.
 
+# Auto-fix: Ensure baml_src path is always resolved correctly relative to this project
+import os
+from pathlib import Path
+
+# Fix globals.py to use absolute paths before it's imported
+_this_file = Path(__file__).absolute()
+_baml_client_dir = _this_file.parent
+_globals_py = _baml_client_dir / "globals.py"
+
+if _globals_py.exists():
+    _globals_content = _globals_py.read_text()
+    # Check if it needs fixing (uses relative "baml_src" path)
+    if '"baml_src"' in _globals_content and "_baml_src_dir" not in _globals_content:
+        # Fix the path resolution
+        if "from pathlib import Path" not in _globals_content:
+            _globals_content = _globals_content.replace(
+                "import os",
+                "import os\nfrom pathlib import Path"
+            )
+        
+        # Replace relative path with absolute path resolution
+        _replacement = '''# Resolve baml_src path relative to this file's location to ensure we use the correct project's BAML files
+_baml_client_dir = Path(__file__).parent.absolute()
+_baml_src_dir = _baml_client_dir.parent / "baml_src"
+
+DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOURE_DOING_RUNTIME = BamlRuntime.from_files(
+  str(_baml_src_dir),'''
+        _globals_content = _globals_content.replace(
+            'DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOURE_DOING_RUNTIME = BamlRuntime.from_files(\n  "baml_src",',
+            _replacement
+        )
+        _globals_py.write_text(_globals_content)
+
+
 __version__ = "0.213.0"
 
 try:

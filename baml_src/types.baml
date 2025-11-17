@@ -40,7 +40,7 @@ class NextJSProjectComponent {
     command CommandType @description("which command needs to be run for this particular component")
     filePath string @description("the path where this command needs to be run. example of filepath would look like 'app/components/Button.tsx', the current project is not using src directory ")
     dependencies string[] @description("List of other components this depends on (if any)")
-    specific_instructions string @description("Step-by-step instructions for implementation (5-7 numbered steps, very explicit)")
+    specific_instructions string[] @description("Step-by-step instructions for implementation (5-7 numbered steps, very explicit)")
     input_validation string @description("If applicable, validation rules for inputs, return empty string if its not needed")
     error_handling string @description("How errors should be handled")
     design_guidelines string @description("Design system guidelines, Tailwind classes, responsive breakpoints, accessibility requirements. Colors to be preferred.  Return empty string if not applicable.")
@@ -52,6 +52,7 @@ class NextJSProjectComponent {
 
 class ProjectStructure {
     components NextJSProjectComponent[]
+    color_palette string @description("color palette/theme for this project")
     entry_point string @description("Main file that ties everything together")
     package_dependencies string[] @description("Only include dependencies mentioned in user prompt or required by feature templates")
     file_structure string[] @description("List of files that need to be created")

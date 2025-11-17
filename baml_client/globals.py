@@ -12,14 +12,19 @@
 
 from __future__ import annotations
 import os
+from pathlib import Path
 import warnings
 
 from baml_py import BamlCtxManager, BamlRuntime
 from .inlinedbaml import get_baml_files
 from typing import Dict
 
+# Resolve baml_src path relative to this file's location to ensure we use the correct project's BAML files
+_baml_client_dir = Path(__file__).parent.absolute()
+_baml_src_dir = _baml_client_dir.parent / "baml_src"
+
 DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOURE_DOING_RUNTIME = BamlRuntime.from_files(
-  "baml_src",
+  str(_baml_src_dir),
   get_baml_files(),
   os.environ.copy()
 )

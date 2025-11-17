@@ -91,17 +91,17 @@ class BamlSyncClient:
     def parse_stream(self):
       return self.__llm_stream_parser
     
-    def PlanNextjsSteps(self, user_prompt: str,
+    def PlanNextjsProjectGenerationSteps(self, user_prompt: str,
         baml_options: BamlCallOptions = {},
     ) -> typing.Union["types.ProjectStructure", str]:
         # Check if on_tick is provided
         if 'on_tick' in baml_options:
-            stream = self.stream.PlanNextjsSteps(user_prompt=user_prompt,
+            stream = self.stream.PlanNextjsProjectGenerationSteps(user_prompt=user_prompt,
                 baml_options=baml_options)
             return stream.get_final_response()
         else:
             # Original non-streaming code
-            result = self.__options.merge_options(baml_options).call_function_sync(function_name="PlanNextjsSteps", args={
+            result = self.__options.merge_options(baml_options).call_function_sync(function_name="PlanNextjsProjectGenerationSteps", args={
                 "user_prompt": user_prompt,
             })
             return typing.cast(typing.Union["types.ProjectStructure", str], result.cast_to(types, types, stream_types, False, __runtime__))
@@ -114,10 +114,10 @@ class BamlStreamClient:
     def __init__(self, options: DoNotUseDirectlyCallManager):
         self.__options = options
 
-    def PlanNextjsSteps(self, user_prompt: str,
+    def PlanNextjsProjectGenerationSteps(self, user_prompt: str,
         baml_options: BamlCallOptions = {},
     ) -> baml_py.BamlSyncStream[typing.Union["stream_types.ProjectStructure", str], typing.Union["types.ProjectStructure", str]]:
-        ctx, result = self.__options.merge_options(baml_options).create_sync_stream(function_name="PlanNextjsSteps", args={
+        ctx, result = self.__options.merge_options(baml_options).create_sync_stream(function_name="PlanNextjsProjectGenerationSteps", args={
             "user_prompt": user_prompt,
         })
         return baml_py.BamlSyncStream[typing.Union["stream_types.ProjectStructure", str], typing.Union["types.ProjectStructure", str]](
@@ -134,10 +134,10 @@ class BamlHttpRequestClient:
     def __init__(self, options: DoNotUseDirectlyCallManager):
         self.__options = options
 
-    def PlanNextjsSteps(self, user_prompt: str,
+    def PlanNextjsProjectGenerationSteps(self, user_prompt: str,
         baml_options: BamlCallOptions = {},
     ) -> baml_py.baml_py.HTTPRequest:
-        result = self.__options.merge_options(baml_options).create_http_request_sync(function_name="PlanNextjsSteps", args={
+        result = self.__options.merge_options(baml_options).create_http_request_sync(function_name="PlanNextjsProjectGenerationSteps", args={
             "user_prompt": user_prompt,
         }, mode="request")
         return result
@@ -149,10 +149,10 @@ class BamlHttpStreamRequestClient:
     def __init__(self, options: DoNotUseDirectlyCallManager):
         self.__options = options
 
-    def PlanNextjsSteps(self, user_prompt: str,
+    def PlanNextjsProjectGenerationSteps(self, user_prompt: str,
         baml_options: BamlCallOptions = {},
     ) -> baml_py.baml_py.HTTPRequest:
-        result = self.__options.merge_options(baml_options).create_http_request_sync(function_name="PlanNextjsSteps", args={
+        result = self.__options.merge_options(baml_options).create_http_request_sync(function_name="PlanNextjsProjectGenerationSteps", args={
             "user_prompt": user_prompt,
         }, mode="stream")
         return result

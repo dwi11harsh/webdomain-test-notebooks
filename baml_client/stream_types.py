@@ -31,7 +31,7 @@ class NextJSProjectComponent(BaseModel):
     command: typing.Optional[types.CommandType] = None
     filePath: typing.Optional[str] = None
     dependencies: typing.List[str]
-    specific_instructions: typing.Optional[str] = None
+    specific_instructions: typing.List[str]
     input_validation: typing.Optional[str] = None
     error_handling: typing.Optional[str] = None
     design_guidelines: typing.Optional[str] = None
@@ -40,6 +40,7 @@ class NextJSProjectComponent(BaseModel):
 
 class ProjectStructure(BaseModel):
     components: typing.List["NextJSProjectComponent"]
+    color_palette: typing.Optional[str] = None
     entry_point: typing.Optional[str] = None
     package_dependencies: typing.List[str]
     file_structure: typing.List[str]

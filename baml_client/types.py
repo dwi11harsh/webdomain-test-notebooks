@@ -131,7 +131,7 @@ class NextJSProjectComponent(BaseModel):
     command: CommandType
     filePath: str
     dependencies: typing.List[str]
-    specific_instructions: str
+    specific_instructions: typing.List[str]
     input_validation: str
     error_handling: str
     design_guidelines: str
@@ -140,6 +140,7 @@ class NextJSProjectComponent(BaseModel):
 
 class ProjectStructure(BaseModel):
     components: typing.List["NextJSProjectComponent"]
+    color_palette: str
     entry_point: str
     package_dependencies: typing.List[str]
     file_structure: typing.List[str]
