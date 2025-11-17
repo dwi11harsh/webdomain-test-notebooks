@@ -37,8 +37,58 @@ def get_checks(checks: typing.Dict[CheckName, Check]) -> typing.List[Check]:
 def all_succeeded(checks: typing.Dict[CheckName, Check]) -> bool:
     return all(check.status == "succeeded" for check in get_checks(checks))
 # #########################################################################
-# Generated enums (5)
+# Generated enums (6)
 # #########################################################################
+
+class AllowedHTMLTag(str, Enum):
+    A = "A"
+    B = "B"
+    Blockquote = "Blockquote"
+    Br = "Br"
+    Code = "Code"
+    Dd = "Dd"
+    Del = "Del"
+    Details = "Details"
+    Div = "Div"
+    Dl = "Dl"
+    Dt = "Dt"
+    Em = "Em"
+    H1 = "H1"
+    H2 = "H2"
+    H3 = "H3"
+    H4 = "H4"
+    H5 = "H5"
+    H6 = "H6"
+    Hr = "Hr"
+    I = "I"
+    Ins = "Ins"
+    Kbd = "Kbd"
+    Li = "Li"
+    Ol = "Ol"
+    P = "P"
+    Pre = "Pre"
+    Q = "Q"
+    Rp = "Rp"
+    Rt = "Rt"
+    Ruby = "Ruby"
+    S = "S"
+    Samp = "Samp"
+    Source = "Source"
+    Span = "Span"
+    Strike = "Strike"
+    Strong = "Strong"
+    Sub = "Sub"
+    Summary = "Summary"
+    Sup = "Sup"
+    Table = "Table"
+    Tbody = "Tbody"
+    Td = "Td"
+    Tfoot = "Tfoot"
+    Th = "Th"
+    Thead = "Thead"
+    Tr = "Tr"
+    Ul = "Ul"
+    Var = "Var"
 
 class AnalyticsProvider(str, Enum):
     Posthog = "Posthog"
@@ -50,6 +100,7 @@ class CommandType(str, Enum):
     CreateFile = "CreateFile"
     UpdateFile = "UpdateFile"
     DeleteFile = "DeleteFile"
+    ReadFile = "ReadFile"
 
 class ComponentType(str, Enum):
     Route = "Route"
@@ -85,7 +136,7 @@ class FeatureTemplate(BaseModel):
     components: typing.List[str]
     dependencies: typing.List[str]
 
-class ProjectComponent(BaseModel):
+class NextJSProjectComponent(BaseModel):
     type: ComponentType
     command: CommandType
     filePath: str
@@ -103,7 +154,7 @@ class ProjectComponent(BaseModel):
     analytics_events: typing.List[str]
 
 class ProjectStructure(BaseModel):
-    components: typing.List["ProjectComponent"]
+    components: typing.List["NextJSProjectComponent"]
     entry_point: str
     package_dependencies: typing.List[str]
     file_structure: typing.List[str]

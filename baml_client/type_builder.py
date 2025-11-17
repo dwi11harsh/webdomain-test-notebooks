@@ -20,14 +20,18 @@ from .globals import DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOURE_DOING_RUNTIM
 class TypeBuilder(type_builder.TypeBuilder):
     def __init__(self):
         super().__init__(classes=set(
-          ["FeatureTemplate","ProjectComponent","ProjectStructure","RouteGeneratorOutput",]
+          ["FeatureTemplate","NextJSProjectComponent","ProjectStructure","RouteGeneratorOutput",]
         ), enums=set(
-          ["AnalyticsProvider","CommandType","ComponentType","DesignSystem","TestType",]
+          ["AllowedHTMLTag","AnalyticsProvider","CommandType","ComponentType","DesignSystem","TestType",]
         ), runtime=DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOURE_DOING_RUNTIME)
 
     # #########################################################################
-    # Generated enums 5
+    # Generated enums 6
     # #########################################################################
+
+    @property
+    def AllowedHTMLTag(self) -> "AllowedHTMLTagViewer":
+        return AllowedHTMLTagViewer(self)
 
     @property
     def AnalyticsProvider(self) -> "AnalyticsProviderViewer":
@@ -59,8 +63,8 @@ class TypeBuilder(type_builder.TypeBuilder):
         return FeatureTemplateViewer(self)
 
     @property
-    def ProjectComponent(self) -> "ProjectComponentViewer":
-        return ProjectComponentViewer(self)
+    def NextJSProjectComponent(self) -> "NextJSProjectComponentViewer":
+        return NextJSProjectComponentViewer(self)
 
     @property
     def ProjectStructure(self) -> "ProjectStructureViewer":
@@ -73,8 +77,234 @@ class TypeBuilder(type_builder.TypeBuilder):
 
 
 # #########################################################################
-# Generated enums 5
+# Generated enums 6
 # #########################################################################
+
+class AllowedHTMLTagAst:
+    def __init__(self, tb: type_builder.TypeBuilder):
+        _tb = tb._tb # type: ignore (we know how to use this private attribute)
+        self._bldr = _tb.enum("AllowedHTMLTag")
+        self._values: typing.Set[str] = set([  "A",  "B",  "Blockquote",  "Br",  "Code",  "Dd",  "Del",  "Details",  "Div",  "Dl",  "Dt",  "Em",  "H1",  "H2",  "H3",  "H4",  "H5",  "H6",  "Hr",  "I",  "Ins",  "Kbd",  "Li",  "Ol",  "P",  "Pre",  "Q",  "Rp",  "Rt",  "Ruby",  "S",  "Samp",  "Source",  "Span",  "Strike",  "Strong",  "Sub",  "Summary",  "Sup",  "Table",  "Tbody",  "Td",  "Tfoot",  "Th",  "Thead",  "Tr",  "Ul",  "Var",  ])
+        self._vals = AllowedHTMLTagValues(self._bldr, self._values)
+
+    def type(self) -> baml_py.FieldType:
+        return self._bldr.field()
+
+    @property
+    def values(self) -> "AllowedHTMLTagValues":
+        return self._vals
+
+
+class AllowedHTMLTagViewer(AllowedHTMLTagAst):
+    def __init__(self, tb: type_builder.TypeBuilder):
+        super().__init__(tb)
+
+    
+    def list_values(self) -> typing.List[typing.Tuple[str, type_builder.EnumValueViewer]]:
+        return [(name, type_builder.EnumValueViewer(self._bldr.value(name))) for name in self._values]
+    
+
+class AllowedHTMLTagValues:
+    def __init__(self, enum_bldr: baml_py.EnumBuilder, values: typing.Set[str]):
+        self.__bldr = enum_bldr
+        self.__values = values # type: ignore (we know how to use this private attribute) # noqa: F821
+
+    
+    
+    @property
+    def A(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("A"))
+    
+    @property
+    def B(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("B"))
+    
+    @property
+    def Blockquote(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Blockquote"))
+    
+    @property
+    def Br(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Br"))
+    
+    @property
+    def Code(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Code"))
+    
+    @property
+    def Dd(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Dd"))
+    
+    @property
+    def Del(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Del"))
+    
+    @property
+    def Details(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Details"))
+    
+    @property
+    def Div(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Div"))
+    
+    @property
+    def Dl(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Dl"))
+    
+    @property
+    def Dt(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Dt"))
+    
+    @property
+    def Em(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Em"))
+    
+    @property
+    def H1(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("H1"))
+    
+    @property
+    def H2(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("H2"))
+    
+    @property
+    def H3(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("H3"))
+    
+    @property
+    def H4(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("H4"))
+    
+    @property
+    def H5(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("H5"))
+    
+    @property
+    def H6(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("H6"))
+    
+    @property
+    def Hr(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Hr"))
+    
+    @property
+    def I(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("I"))
+    
+    @property
+    def Ins(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Ins"))
+    
+    @property
+    def Kbd(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Kbd"))
+    
+    @property
+    def Li(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Li"))
+    
+    @property
+    def Ol(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Ol"))
+    
+    @property
+    def P(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("P"))
+    
+    @property
+    def Pre(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Pre"))
+    
+    @property
+    def Q(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Q"))
+    
+    @property
+    def Rp(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Rp"))
+    
+    @property
+    def Rt(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Rt"))
+    
+    @property
+    def Ruby(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Ruby"))
+    
+    @property
+    def S(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("S"))
+    
+    @property
+    def Samp(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Samp"))
+    
+    @property
+    def Source(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Source"))
+    
+    @property
+    def Span(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Span"))
+    
+    @property
+    def Strike(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Strike"))
+    
+    @property
+    def Strong(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Strong"))
+    
+    @property
+    def Sub(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Sub"))
+    
+    @property
+    def Summary(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Summary"))
+    
+    @property
+    def Sup(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Sup"))
+    
+    @property
+    def Table(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Table"))
+    
+    @property
+    def Tbody(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Tbody"))
+    
+    @property
+    def Td(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Td"))
+    
+    @property
+    def Tfoot(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Tfoot"))
+    
+    @property
+    def Th(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Th"))
+    
+    @property
+    def Thead(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Thead"))
+    
+    @property
+    def Tr(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Tr"))
+    
+    @property
+    def Ul(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Ul"))
+    
+    @property
+    def Var(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("Var"))
+    
+    
+
 
 class AnalyticsProviderAst:
     def __init__(self, tb: type_builder.TypeBuilder):
@@ -130,7 +360,7 @@ class CommandTypeAst:
     def __init__(self, tb: type_builder.TypeBuilder):
         _tb = tb._tb # type: ignore (we know how to use this private attribute)
         self._bldr = _tb.enum("CommandType")
-        self._values: typing.Set[str] = set([  "CreateFile",  "UpdateFile",  "DeleteFile",  ])
+        self._values: typing.Set[str] = set([  "CreateFile",  "UpdateFile",  "DeleteFile",  "ReadFile",  ])
         self._vals = CommandTypeValues(self._bldr, self._values)
 
     def type(self) -> baml_py.FieldType:
@@ -168,6 +398,10 @@ class CommandTypeValues:
     @property
     def DeleteFile(self) -> type_builder.EnumValueViewer:
         return type_builder.EnumValueViewer(self.__bldr.value("DeleteFile"))
+    
+    @property
+    def ReadFile(self) -> type_builder.EnumValueViewer:
+        return type_builder.EnumValueViewer(self.__bldr.value("ReadFile"))
     
     
 
@@ -402,22 +636,22 @@ class FeatureTemplateProperties:
     
 
 
-class ProjectComponentAst:
+class NextJSProjectComponentAst:
     def __init__(self, tb: type_builder.TypeBuilder):
         _tb = tb._tb # type: ignore (we know how to use this private attribute)
-        self._bldr = _tb.class_("ProjectComponent")
+        self._bldr = _tb.class_("NextJSProjectComponent")
         self._properties: typing.Set[str] = set([  "type",  "command",  "filePath",  "current_code",  "name",  "description",  "dependencies",  "specific_instructions",  "expected_behavior",  "input_validation",  "error_handling",  "example_usage",  "design_guidelines",  "test_requirements",  "analytics_events",  ])
-        self._props = ProjectComponentProperties(self._bldr, self._properties)
+        self._props = NextJSProjectComponentProperties(self._bldr, self._properties)
 
     def type(self) -> baml_py.FieldType:
         return self._bldr.field()
 
     @property
-    def props(self) -> "ProjectComponentProperties":
+    def props(self) -> "NextJSProjectComponentProperties":
         return self._props
 
 
-class ProjectComponentViewer(ProjectComponentAst):
+class NextJSProjectComponentViewer(NextJSProjectComponentAst):
     def __init__(self, tb: type_builder.TypeBuilder):
         super().__init__(tb)
 
@@ -427,7 +661,7 @@ class ProjectComponentViewer(ProjectComponentAst):
     
 
 
-class ProjectComponentProperties:
+class NextJSProjectComponentProperties:
     def __init__(self, bldr: baml_py.ClassBuilder, properties: typing.Set[str]):
         self.__bldr = bldr
         self.__properties = properties # type: ignore (we know how to use this private attribute) # noqa: F821

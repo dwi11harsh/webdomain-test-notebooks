@@ -36,10 +36,10 @@ enum CommandType {
     CreateFile
     UpdateFile
     DeleteFile
-    // ReadFile     // enable this later while the agent is also allowed to edit
+    ReadFile     // enable this later while the agent is also allowed to edit
 }
 
-class ProjectComponent {
+class NextJSProjectComponent {
     type ComponentType
     command CommandType @description("which command needs to be run for this particular component")
     filePath string @description(`the path where this command needs to be run. example of filepath would look like "app/components/Button.tsx"`)
@@ -65,7 +65,7 @@ class FeatureTemplate {
 }
 
 class ProjectStructure {
-    components ProjectComponent[]
+    components NextJSProjectComponent[]
     entry_point string @description("Main file that ties everything together")
     package_dependencies string[] @description("Only include dependencies mentioned in user prompt or required by feature templates")
     file_structure string[] @description("List of files that need to be created")

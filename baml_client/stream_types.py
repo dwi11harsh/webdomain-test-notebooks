@@ -32,7 +32,7 @@ class FeatureTemplate(BaseModel):
     components: typing.List[str]
     dependencies: typing.List[str]
 
-class ProjectComponent(BaseModel):
+class NextJSProjectComponent(BaseModel):
     type: typing.Optional[types.ComponentType] = None
     command: typing.Optional[types.CommandType] = None
     filePath: typing.Optional[str] = None
@@ -50,7 +50,7 @@ class ProjectComponent(BaseModel):
     analytics_events: typing.List[str]
 
 class ProjectStructure(BaseModel):
-    components: typing.List["ProjectComponent"]
+    components: typing.List["NextJSProjectComponent"]
     entry_point: typing.Optional[str] = None
     package_dependencies: typing.List[str]
     file_structure: typing.List[str]

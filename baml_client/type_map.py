@@ -19,8 +19,8 @@ type_map = {
     "types.FeatureTemplate": types.FeatureTemplate,
     "stream_types.FeatureTemplate": stream_types.FeatureTemplate,
 
-    "types.ProjectComponent": types.ProjectComponent,
-    "stream_types.ProjectComponent": stream_types.ProjectComponent,
+    "types.NextJSProjectComponent": types.NextJSProjectComponent,
+    "stream_types.NextJSProjectComponent": stream_types.NextJSProjectComponent,
 
     "types.ProjectStructure": types.ProjectStructure,
     "stream_types.ProjectStructure": stream_types.ProjectStructure,
@@ -28,6 +28,8 @@ type_map = {
     "types.RouteGeneratorOutput": types.RouteGeneratorOutput,
     "stream_types.RouteGeneratorOutput": stream_types.RouteGeneratorOutput,
 
+
+    "types.AllowedHTMLTag": types.AllowedHTMLTag,
 
     "types.AnalyticsProvider": types.AnalyticsProvider,
 
